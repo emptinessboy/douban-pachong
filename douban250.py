@@ -51,6 +51,7 @@ for i in range(0, 250, 50):
 
 with open(os.path.join(res_dir, "movie_urls.json"), 'w+', encoding='utf-8') as f:
     f.write(json.dumps(result_set))
+    f.close()
 
 # 完成第一步爬取
 print("\n============ 步骤一完成 ==========="
@@ -59,6 +60,7 @@ print("\n============ 步骤一完成 ==========="
 print("\n============ 深入爬取 ===========")
 
 # 从之前爬取的URL列表结果集中遍历
+j = 1  # 计数用
 for i in result_set:
     print(i)
     # 爬取每个电影详情页中的url
@@ -76,8 +78,11 @@ for i in result_set:
     # 使用正则表达式匹配后存入列表
     details = re.findall('<script type="application/ld\+json">(.*?)</script>', res, flags=re.DOTALL)
     # 准备写入文件
-    print("写入文件")
-    with open(os.path.join(res_dir, "movie_urls.json"), 'w+', encoding='utf-8') as f:
-        f.write(json.dumps(result_set))
-
-    print(title)
+    print("写入文件序号：" + str(j))
+    # 处理爬取到的json换行问题
+    details_str = str(details[0]).replace("\n", "")
+    with open(os.path.join(res_dir, str(j) + ".json"), 'w+', encoding='utf-8') as f:
+        f.write(details_str)
+        f.close()
+    print("写入文件完成")
+    j += 1
