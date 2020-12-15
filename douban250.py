@@ -86,3 +86,5 @@ for i in result_set:
         f.close()
     print("写入文件完成")
     j += 1
+
+print("\n============ 深入爬取电影信息完成 ===========")
