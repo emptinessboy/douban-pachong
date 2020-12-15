@@ -55,7 +55,7 @@ with open(os.path.join(res_dir, "movie_urls.json"), 'w+', encoding='utf-8') as f
 
 # 完成第一步爬取
 print("\n============ 步骤一完成 ==========="
-      "\n电影列表爬取完成获取电影列表的长度为： " + str(len(result_set)))
+      "\n电影列表爬取完成，获取电影列表的长度为： " + str(len(result_set)))
 
 print("\n============ 深入爬取 ===========")
 
