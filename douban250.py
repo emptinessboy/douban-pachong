@@ -101,7 +101,7 @@ for i in result_set:
     write_comments = ""
     comments = re.findall('<div class="short-content">(.*?)&nbsp;', res, flags=re.DOTALL)
     for comment in comments:
-        # comment = str(comment).replace(" ", "")
+        comment = str(comment).replace(" ", "")
         comment = str(comment).replace("\n", "")
         comment = str(comment).replace("\\n", "")
         comment = str(comment).replace("<pclass=\"spoiler-tip\">", "")
