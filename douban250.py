@@ -5,6 +5,8 @@
 import json
 import os
 # 用来发起网络请求
+import time
+
 import requests
 # Python中re模块主要功能是通过正则表达式是用来匹配处理字符串的
 import re
@@ -22,7 +24,8 @@ send_headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36",
     "Connection": "keep-alive",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-    "Accept-Language": "zh-CN,zh;q=0.9"
+    "Accept-Language": "zh-CN,zh;q=0.9",
+    "Cookie": "bid=xuMRKp9vXfQ; douban-fav-remind=1; ll=\"118173\"; __utmz=30149280.1607948606.4.4.utmcsr=baidu|utmccn=(organic)|utmcmd=organic; __utmz=223695111.1607948607.1.1.utmcsr=douban.com|utmccn=(referral)|utmcmd=referral|utmcct=/; _vwo_uuid_v2=D94ADB128DB38477258690F5CB5FF1EE2|a1915678b4d1ddd64d1e906652b81d65; __utmc=30149280; __utmc=223695111; _pk_ref.100001.4cf6=%5B%22%22%2C%22%22%2C1608001308%2C%22https%3A%2F%2Fwww.douban.com%2F%22%5D; _pk_ses.100001.4cf6=*; __utma=30149280.1474527261.1607323776.1607998283.1608001308.7; __utmb=30149280.0.10.1608001308; __utma=223695111.1351889877.1607948607.1607998283.1608001308.4; __utmb=223695111.0.10.1608001308; dbcl2=\"195748063:L5GJvVWULRo\"; ck=zzNB; _pk_id.100001.4cf6=45e370217946e0dd.1607948607.4.1608002762.1607998283.; push_noty_num=0; push_doumail_num=0"
 }  # 伪装成浏览器
 
 result_set = []
@@ -48,6 +51,8 @@ for i in range(0, 250, 50):
     res_movies = re.findall('https://movie.douban.com/subject/\d+/', res)
     result_set += res_movies
     print("添加了50个电影", res_movies)
+    # 休眠防止被封
+    time.sleep(3)
 
 with open(os.path.join(res_dir, "movie_urls.json"), 'w+', encoding='utf-8') as f:
     f.write(json.dumps(result_set))
@@ -86,5 +91,7 @@ for i in result_set:
         f.close()
     print("写入文件完成")
     j += 1
+    # 休眠防止被封
+    time.sleep(3)
 
 print("\n============ 深入爬取电影信息完成 ===========")

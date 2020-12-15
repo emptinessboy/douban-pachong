@@ -22,7 +22,7 @@ response.close()
 res = response.text
 # res = res.replace("@", "")
 # 使用正则表达式匹配后存入列表 res_jj
-title = re.findall('<script type="application/ld\+json">(.*?)</script>', res, flags=re.DOTALL)
+title = re.findall('<div class="short-content">(.*?)', res)
 # title = re.findall('<script type="application/ld\+json">([\s\S]*?)</script>', res)
 # title = re.search('<script type="application/ld\+json">.*</script>', res, flags=re.DOTALL)
 print(title[0])
