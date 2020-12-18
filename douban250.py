@@ -56,6 +56,7 @@ for i in range(0, 250, 25):
     # 使用正则表达式匹配后存入列表 res_jj
     res_movies = re.findall('https://movie.douban.com/subject/\d+/', res)
     result_set += res_movies
+    # 去重
     result_set = list(set(result_set))
     print("添加了25个电影", res_movies)
     # 休眠防止被封
