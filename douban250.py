@@ -38,7 +38,7 @@ result_set = []
 
 print("\n============ 开始爬取 ===========")
 
-for i in range(0, 250, 50):
+for i in range(0, 250, 25):
     url = base_url + str(i)
     print("正在爬取的电影列表的 url 为：", url)
     # 爬取url
@@ -56,7 +56,8 @@ for i in range(0, 250, 50):
     # 使用正则表达式匹配后存入列表 res_jj
     res_movies = re.findall('https://movie.douban.com/subject/\d+/', res)
     result_set += res_movies
-    print("添加了50个电影", res_movies)
+    result_set = list(set(result_set))
+    print("添加了25个电影", res_movies)
     # 休眠防止被封
     time.sleep(3)
 
