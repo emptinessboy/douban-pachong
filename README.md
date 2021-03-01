@@ -23,32 +23,28 @@ URL就可以获得Top 250 每部电影的详情地址。
 
 [![image015.png](https://media.everdo.cn/tank/pic-bed/2021/03/01/image015.png)](https://up.media.everdo.cn/image/oNkL)
 
-[![image016.png](https://media.everdo.cn/tank/pic-bed/2021/03/01/image016.png)](https://up.media.everdo.cn/image/okwc)
-
 [![image017.png](https://media.everdo.cn/tank/pic-bed/2021/03/01/image017.png)](https://up.media.everdo.cn/image/o9n2)
 
 这部分爬取完成后，我将数据序列化后写入 文件movie_urls.json，最后得到了如下的电影详情地址列表：
 
 [![image018.png](https://media.everdo.cn/tank/pic-bed/2021/03/01/image018.png)](https://up.media.everdo.cn/image/ocTk)
 
-[![image019.png](https://media.everdo.cn/tank/pic-bed/2021/03/01/image019.png)](https://up.media.everdo.cn/image/oEQZ)
 
 #### 爬取每个电影的具体详情：
 
 爬取这部分数据前，我通过开发者工具查看源代码，发现豆瓣电影详情页中，电影名称，导演，演员，年份等大量的信息都是通过JavaScript进行渲染输出的。而原始数据就存在网页中一段脚本中。
 
+[![image020.png](https://media.everdo.cn/tank/pic-bed/2021/03/01/image020.png)](https://up.media.everdo.cn/image/o0zx)
+
 而我要做的就是先遍历访问之前爬取 得到的电影详情列表中的每一个链接地址， 然后使用正则表达式提取这部分我需要的内容 。而针对制片国家 等其他 的信息， 则通过寻找DOM树的方式，使用正则表达式匹配对应的标签后进行爬取。
 
 #### 模块代码：
 
+[![image022.png](https://media.everdo.cn/tank/pic-bed/2021/03/01/image022.png)](https://up.media.everdo.cn/image/ozYt)
 
+这部分爬取完成后，我没有额外处理 数据，直接将数据 按照一个电影一个文件的方式存放到了 250 个json中，其中文件名就是电影的排名。这里我先不清洗数据，将数据清洗的过程留给后面的MapReduce来进行处理。其中爬取得到的数据大致如下。
 
-
-
-这部分爬取完成后，我没有额外处理 数据，直接将数据 按照一个电影一个文件的方式存放到了 250 个json
-中，其中文件名就是电影的排名。这里我先不清洗数据，将数据清洗的过程留给后面的MapReduce来进行
-处理。其中爬取得到的数据大致如下。
-
+[![image024.png](https://media.everdo.cn/tank/pic-bed/2021/03/01/image024.png)](https://up.media.everdo.cn/image/os4B)
 
 #### 爬取每个电影的前十条评论：
 
