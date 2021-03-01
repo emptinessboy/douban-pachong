@@ -48,22 +48,29 @@ URL就可以获得Top 250 每部电影的详情地址。
 
 #### 爬取每个电影的前十条评论：
 
-最后我再使用同样的方式爬取每部电影下面的十条评论，按照一行一个的格式存到了对应的1- 250的txt文
-本文件中。
+最后我再使用同样的方式爬取每部电影下面的十条评论，按照一行一个的格式存到了对应的1- 250的txt文本文件中。
+
+[![image026.png](https://media.everdo.cn/tank/pic-bed/2021/03/01/image026.png)](https://up.media.everdo.cn/image/o1LI)
 
 #### 爬取过程：
 
 #### 爬取过程截图如下
 
+[![2018010587-__08__0002.jpg](https://media.everdo.cn/tank/pic-bed/2021/03/01/2018010587-__08__0002.jpg)](https://up.media.everdo.cn/image/oymi)
+
+[![2018010587-__08__0003.jpg](https://media.everdo.cn/tank/pic-bed/2021/03/01/2018010587-__08__0003.jpg)](https://up.media.everdo.cn/image/oTO4)
+
+[![2018010587-__09__0001.jpg](https://media.everdo.cn/tank/pic-bed/2021/03/01/2018010587-__09__0001.jpg)](https://up.media.everdo.cn/image/oCnM)
 
 #### 遇到的问题和反爬虫策略的解决：
+
+[![2018010587-__09__0002.jpg](https://media.everdo.cn/tank/pic-bed/2021/03/01/2018010587-__09__0002.jpg)](https://up.media.everdo.cn/image/oSqY)
 
 #### IP被封
 
 #### 在爬取的过程中豆瓣禁封了我的网络IP地址导致爬取中途出错的情况。
 
-对于这个问题，我尝试在request模块添加了自己登陆后的cookie作为请求头，实测添加头后豆瓣立刻放行
-了我的爬虫程序。
+对于这个问题，我尝试在request模块添加了自己登陆后的cookie作为请求头，实测添加头后豆瓣立刻放行了我的爬虫程序。
 
 ```
 send_headers = {
@@ -81,8 +88,11 @@ exchange;v=b3;q=0.9",
 ```
 
 账号被封
-在添加完自己的登录信息后，正常爬取到 100 多条数据后，再次出现错误。这次网页的提示是我的账户被临
-时禁封了。
 
-经过排查。是由于我的请求频次过快导致。再给每个request请求加上指定的sleep秒数后，再次尝试爬取，
-就可以顺利完成爬取过程了。
+[![2018010587-__10__0001.jpg](https://media.everdo.cn/tank/pic-bed/2021/03/01/2018010587-__10__0001.jpg)](https://up.media.everdo.cn/image/opTa)
+
+在添加完自己的登录信息后，正常爬取到 100 多条数据后，再次出现错误。这次网页的提示是我的账户被临时禁封了。
+
+经过排查。是由于我的请求频次过快导致。再给每个request请求加上指定的sleep秒数后，再次尝试爬取，就可以顺利完成爬取过程了。
+
+[![2018010587-__10__0002.jpg](https://media.everdo.cn/tank/pic-bed/2021/03/01/2018010587-__10__0002.jpg)](https://up.media.everdo.cn/image/ow4s)
